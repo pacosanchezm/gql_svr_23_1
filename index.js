@@ -4,10 +4,11 @@ console.log("Hello CodeSandbox");
 
 var express = require("express")
 var { graphqlHTTP } = require("express-graphql")
-var { buildSchema } = require("graphql")
+var { buildSchema, GraphQLSchema, GraphQLObjectType, GraphQLString } = require("graphql")
+var { createHandler } = require("graphql-http/lib/use/express")
 
 // Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
+var schemaold = buildSchema(`
   type Query {
     hello: String
   }
@@ -22,6 +23,38 @@ var root = {
 
 
 
+
+
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      hello: {
+        type: GraphQLString,
+        resolve: () => 'world',
+      },
+    },
+  }),
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var app = express()
 
 
@@ -32,18 +65,49 @@ app.get("/", (req, res) => {
 
 
 
+// app.use('/graphql', createHandler({ schema }));
 
+app.use('/graphql', createHandler(
+  
+  
+  {
+    schema: schemaold,
+    rootValue: root,
+    graphiql: true,
+  }
+  
+  
+  
+));
 
 
 
 app.use(
-  "/graphql",
+  "/graphqlold",
   graphqlHTTP({
-    schema: schema,
+    schema: schemaold,
     rootValue: root,
     graphiql: true,
   })
 )
+
+
+
+
+
+
+
+
+
+var gql = require("./gql/routegql");
+app.use("/gql", gql);
+
+
+
+
+
+
+
 
 
 app.listen(8080, () => {
