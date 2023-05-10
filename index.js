@@ -6,7 +6,7 @@ var { createHandler } = require("graphql-http/lib/use/express")
 const publicIp = require("public-ip");
 
 
-console.log("Hello");
+console.log(Date());
 
 
 var app = express()

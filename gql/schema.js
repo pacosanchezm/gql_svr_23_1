@@ -1,15 +1,8 @@
-
 var { buildSchema } = require("graphql");
-
 
 let areas = require("./db/areas");
 
-
-
 // ----------------------------------------------------------------------
-
-
-
 
 exports.Schema = buildSchema(`
 
@@ -67,21 +60,10 @@ type Areas {
 
 `);
 
-
-
-
-
-
 exports.root = {
-    
-      hello: () => {
-    return "Hello world!333"
+  hello: () => {
+    return "Hello world!333";
   },
-  
-    Areas: new areas(),
 
-  
-  
-    
-    
-    };
+  Areas: new areas(),
+};
