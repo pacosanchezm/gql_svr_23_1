@@ -20,8 +20,9 @@ let mifunction = function() {
 
             let MiBase = knex.select("*")
               .modify(Q => {if (e.Id) {Q.where({ Id: e.Id });}})
+              .modify(Q => {if (e.Status) {Q.where({ Status: e.Status });}})
+              .from("Spaces_areas")
 
-              .from("Areas1")
               .as("Areas")
             return MiBase
 
@@ -30,19 +31,22 @@ let mifunction = function() {
           }
         },
 
-        Status: function(q) {
+        Amplia: function(q) {
           try {
             let e = q.Query ? q.Query : q;
 
             let MiBase = knex.select("*")
-              .modify(Q => {if (e.Id) {Q.where({ Id: e.Id });}})
-
+              .modify(Q => {if (e.Space) {Q.where({ Space: e.Space });}})
+              .modify(Q => {if (e.Area) {Q.where({ Area: e.Area });}})
               .modify(Q => {if (e.Status) {Q.where({ Status: e.Status });}})
 
               .from("Areas1")
-
-              .orderBy("Id")
-
+              
+              .orderBy([
+                { column: 'Space' }, 
+                { column: 'Listed_order' }
+              ])              
+              
               .as("Areas")
             return MiBase
 

@@ -14,12 +14,11 @@ let areas = require("./db/areas");
 exports.Schema = buildSchema(`
 
 
-
-
 type Area {
   Space: Int
   Space_title: String
   Area: Int
+  Category: Int
 
 }
 
@@ -38,16 +37,14 @@ input AreaInput {
 
 
 
-      type Areas {
-        Consultas: AreasConsultas
-      }
+type Areas {
+  Consultas: AreasConsultas
+}
     
-        type AreasConsultas {
-          Base(Query: AreaInput): [Area]
-          Status(Query: AreaInput): [Area]
-          Amplia(Query: AreaInput): [Area]
-
-        }
+    type AreasConsultas {
+      Base(Query: AreaInput): [Area]
+      Amplia(Query: AreaInput): [Area]
+    }
 
 
 
