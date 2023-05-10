@@ -19,7 +19,11 @@ type Area {
   Space_title: String
   Area: Int
   Category: Int
+  Date: Float
+  Status: String
 
+
+  
 }
 
 input AreaInput {
