@@ -32,6 +32,7 @@ let mifunction = function() {
               .modify(Q => {if (e.Area) {Q.where({ Area: e.Area });}})
               .modify(Q => {if (e.List) {Q.where({ List: e.List });}})
               .modify(Q => {if (e.Status) {Q.where({ Status: e.Status });}})
+              .modify(Q => {if (e.Category) {Q.where({ Category: e.Category });}})
 
               .from("Lists1")
               

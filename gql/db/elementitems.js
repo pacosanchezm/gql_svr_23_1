@@ -1,6 +1,7 @@
 let knex = require("knex")(require("./knexfile")["ntcx1"]);
-
 // -------------------------------------------------------------
+
+
 
 let mifunction = function() {
     return {
@@ -12,10 +13,11 @@ let mifunction = function() {
   
               let MiBase = knex.select("*")
                 .modify(Q => {if (e.Id) {Q.where({ Id: e.Id });}})
+                .modify(Q => {if (e.Element) {Q.where({ Element: e.Element });}})
                 .modify(Q => {if (e.Status) {Q.where({ Status: e.Status });}})
-                .from("Lists_elements")
+                .from("Lists_elements_items")
   
-                .as("Elements")
+                .as("Items")
               return MiBase
   
             } catch (e) {
@@ -29,18 +31,18 @@ let mifunction = function() {
   
               let MiBase = knex.select("*")
                 .modify(Q => {if (e.List) {Q.where({ List: e.List });}})
-                .modify(Q => {if (e.Element) {Q.where({ Element: e.Element });}})
+                .modify(Q => {if (e.Element) {Q.where({ Element_id: e.Element });}})
                 .modify(Q => {if (e.Status) {Q.where({ Status: e.Status });}})
                 .modify(Q => {if (e.Category) {Q.where({ Category: e.Category });}})
 
-                .from("Elements1")
+                .from("Lists_elements_items1")
                 
                 .orderBy([
-                  { column: 'List' }, 
-                  { column: 'Listed_order' }
+                  { column: 'Element_id' }, 
+
                 ])              
                 
-                .as("Elements")
+                .as("Items")
               return MiBase
   
             } catch (e) {
