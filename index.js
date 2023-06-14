@@ -1,7 +1,7 @@
 
 var express = require("express")
 var { buildSchema, GraphQLSchema, GraphQLObjectType, GraphQLString } = require("graphql")
-var { createHandler } = require("graphql-http/lib/use/express")
+// var { createHandler } = require("graphql-http/lib/use/express")
 
 const publicIp = require("public-ip");
 

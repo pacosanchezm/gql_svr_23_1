@@ -2,7 +2,8 @@ var express = require("express")
 const router = express.Router();
 
 var { buildSchema, GraphQLSchema, GraphQLObjectType, GraphQLString } = require("graphql")
-var { createHandler } = require("graphql-http/lib/use/express")
+// var { createHandler } = require("graphql-http/lib/use/express")
+var { createHandler } = require("express-graphql")
 
 
 
