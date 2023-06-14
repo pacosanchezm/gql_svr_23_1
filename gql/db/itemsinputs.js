@@ -27,11 +27,12 @@ let mifunction = function() {
   
           Extended: function(q) {
 
-            console.log("Extended")
-
-
             try {
               let e = q.Query ? q.Query : q;
+  
+  
+             // console.log(e)
+  
   
               let MiBase = knex.select("*")
                 .modify(Q => {if (e.List) {Q.where({ List_id: e.List });}})

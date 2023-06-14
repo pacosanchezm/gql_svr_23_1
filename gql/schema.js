@@ -215,7 +215,6 @@ exports.Schema = buildSchema(`
 
 
 
-
   type ItemInput {
     Area_id: Int
     Area_title: String
@@ -228,8 +227,8 @@ exports.Schema = buildSchema(`
     Item_key: String
     Item_description: String
     Category: Int
-    # --- Category_key: String
-    # --- Category_description: String
+    Category_key: String
+    Category_description: String
 
     Input: Int
     Input_id: Int
