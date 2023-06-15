@@ -65,43 +65,32 @@ let mifunction = function() {
       }, // ------- Consultas
   
       Edit: function() {
-        console.log("edit")
         return {
   
   
-          // Update: async function Update(q) {
-          //   let e = q.Query ? q.Query : q;
+           Update: async function Update(q) {
+             let e = q.Query ? q.Query : q;
 
-
-
-          //   try {
-          //     var sqU = await knex("Lists_elements_items_inputs")
-          //       .where("Id", "=", e.Input)
-          //       .update({
-
-
-          //         Value: e.Value ? e.Value : null
-
-
-          //       });
-          //     return sqU;
-          //   } catch (e) {
-          //     console.error(e);
-          //     return 0;
-          //   }
-
-
-
-
+             try {
+               var sqU = await knex("Lists_elements_items_inputs")
+                 .where("Id", "=", e.Input)
+                 .update({
+                   Value: e.Value ? e.Value : null
+                 });
+               return sqU;
+             } catch (e) {
+              console.error(e);
+               return 0;
+             }
             
-          // },
+           },
   
 
 
 
-          Update: function (q) {
-            return 1
-          }
+    //      Update: function (q) {
+     //       return 1
+     //     }
 
 
 
