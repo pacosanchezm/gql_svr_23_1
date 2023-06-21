@@ -70,7 +70,7 @@ let mifunction = function() {
   
            Update: async function Update(q) {
              let e = q.Query ? q.Query : q;
-
+            //  console.log(e)
              try {
                var sqU = await knex("Lists_elements_items_inputs")
                  .where("Id", "=", e.Input)
