@@ -6,7 +6,7 @@ let lists = require("./db/lists");
 let listelements = require("./db/listelements");
 let elementitems = require("./db/elementitems");
 let iteminputs = require("./db/itemsinputs.js");
-
+let pharmaitems = require("./db/pharmaitems.js");
 
 // ----------------------------------------------------------------------
 
@@ -261,12 +261,42 @@ exports.Schema = buildSchema(`
 
 
 
+  type PharmaItem {
+    Id: Int
+    Cat: String
+    Laboratorio: String
+    Producto: String
+    Presentacion: String
+    Precio: Float
+    Detalles: String
+    Ingredientes: String
+    Caracteristicas: String
+    Notas: String
+    SKU: String
+    Url: String
+    Foto: String
+   
+  }
 
 
 
 
-
-
+  input PharmaItemInput {
+    Id: Int
+    Cat: String
+    Laboratorio: String
+    Producto: String
+    Presentacion: String
+    Precio: Float
+    Detalles: String
+    Ingredientes: String
+    Caracteristicas: String
+    Notas: String
+    SKU: String
+    Url: String
+    Foto: String
+   
+  }
 
 
 
@@ -383,6 +413,8 @@ exports.Schema = buildSchema(`
 
 
 
+
+
   type ListElementItemsM {
     Edit: ListElementItemsEdit
   }
@@ -411,7 +443,16 @@ exports.Schema = buildSchema(`
         }
         
   
+        type PharmaItems {
+          Querys: PharmaItemsQuerys
+        }
+            type PharmaItemsQuerys {
+              Basic(Query: PharmaItemInput): [PharmaItem]
+              Producto(Query: PharmaItemInput): [PharmaItem]
+              Ingrediente(Query: PharmaItemInput): [PharmaItem]
+              Detalles(Query: PharmaItemInput): [PharmaItem]
 
+            }
 
 
 
@@ -429,7 +470,7 @@ exports.Schema = buildSchema(`
     ListElements:ListElements
     ListElementItems:ListElementItems
     ItemInputs:ItemInputs
-
+    PharmaItems:PharmaItems
   }
 
 
@@ -452,7 +493,7 @@ exports.Schema = buildSchema(`
 exports.root = {
   Spaces: new spaces(),
   SpacesM: new spaces(),
-  
+
   Areas: new areas(),
   AreasM: new areas(),
 
@@ -467,4 +508,6 @@ exports.root = {
 
   ItemInputs: new iteminputs(),
   ItemInputsM: new iteminputs(),
+
+  PharmaItems: new pharmaitems(),
 };
