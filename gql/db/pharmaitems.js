@@ -74,6 +74,36 @@ let mifunction = function () {
           }
         },
         
+
+        Detalles: function (q) {
+          try {
+            let e = q.Query ? q.Query : q;
+
+            let MiBase = knex
+              .select("*")
+              .modify((Q) => {
+                if (e.Id) {
+                  Q.where({ Id: e.Id });
+                }
+              })
+              .modify((Q) => {
+                if (e.SKU) {
+                  Q.where({ SKU: e.SKU });
+                }
+              })
+
+              .from("pharma_items")
+
+              .as("pharma_items");
+            return MiBase;
+          } catch (e) {
+            console.error(e);
+          }
+        },
+
+
+
+
         Extended: function (q) {
           try {
             let e = q.Query ? q.Query : q;
